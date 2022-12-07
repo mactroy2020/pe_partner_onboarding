@@ -9,7 +9,7 @@ WORKDIR /ca
 # Install base packages
 #-----
 RUN apt update
-RUN apt install -y bash curl sudo gettext easy-rsa
+RUN apt install -y bash curl sudo gettext easy-rsa openssl
 
 #-----
 # Generate Certificate Authority

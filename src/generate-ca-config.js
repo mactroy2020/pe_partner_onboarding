@@ -23,3 +23,27 @@ console.log(caConfigTemplate);
 fs.writeFileSync(__dirname + "/../config/ca_config_vars", caConfigTemplate, {
     encoding: "utf8",
 });
+
+console.log("Generating OpenSSL cert config using configuration:");
+
+let openSSLConfigTemplate = `
+[ req ]
+prompt                 = no
+days                   = 365
+distinguished_name     = req_distinguished_name
+
+[ req_distinguished_name ]
+countryName            = ${projectConfigFile.Country}
+stateOrProvinceName    = ${projectConfigFile.State}
+localityName           = ${projectConfigFile.City}
+organizationName       = ${projectConfigFile.Company}
+organizationalUnitName = ${projectConfigFile.OrgUnit}
+commonName             = ${projectConfigFile.ca.Host}
+emailAddress           = ${projectConfigFile.Email}
+`;
+
+console.log("\nOpenSSL Config File:");
+console.log(openSSLConfigTemplate);
+fs.writeFileSync(__dirname + "/../config/openssl.cfg", openSSLConfigTemplate, {
+    encoding: "utf8",
+});

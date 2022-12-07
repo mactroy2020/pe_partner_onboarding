@@ -7,13 +7,20 @@
         "build-ca-img": "docker build -t partner-ca:latest .",
         "test": "echo \"Error: no test specified\" && exit 1",
         "init-ca": "/bin/sh ./src/generate-ca.sh",
-        "start-ca": "docker run -d -v $(pwd)/config/ca_config_vars:/ca/vars -v $(pwd)/config/pki:/ca/pki --name my-ca partner-ca:latest tail -f /dev/null",
+        "start-ca": "docker run -d -v $(pwd)/config:/ca/config -v $(pwd)/config/ca_config_vars:/ca/vars -v $(pwd)/src:/ca/scripts -v $(pwd)/certs/pki:/ca/pki -v $(pwd)/certs:/certs --name my-ca partner-ca:latest tail -f /dev/null",
         "build-ca": "docker exec -it my-ca /bin/bash -c \"echo \"oasis.mactroy.com\" | /ca/easyrsa build-ca nopass\"",
+        "generate-abr-certs": "docker exec -it my-ca /bin/bash -c \"cd /ca/scripts && sh generate-abr-certs.sh\"",
         "remove-ca": "docker container rm -f my-ca 2> /dev/null || true",
         "stop-ca": "docker rm -f my-ca",
         "console-ca": "docker exec -it my-ca /bin/bash",
-        "clean": "npm run remove-ca && rm -rf config/pki"
+        "clean": "npm run remove-ca && rm -rf certs && rm -rf node_modules"
     },
     "author": "Troy Cochran",
-    "license": "private"
+    "license": "private",
+    "prettier": {
+        "tabWidth": 4
+    },
+    "dependencies": {
+        "prettier": "^2.8.0"
+    }
 }
