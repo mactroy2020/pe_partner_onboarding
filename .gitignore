@@ -1,2 +1,4 @@
 certs
-config/openssl.cfg
+config/*.cfg
+config/*.cnf
+config/ca_config_vars
