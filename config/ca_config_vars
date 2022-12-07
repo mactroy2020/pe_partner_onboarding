@@ -1,0 +1,11 @@
+
+set_var EASYRSA_REQ_COUNTRY    "US"
+set_var EASYRSA_REQ_PROVINCE   "North Carolina"
+set_var EASYRSA_REQ_CITY       "Raleigh"
+set_var EASYRSA_REQ_ORG        "MacTroy Testing"
+set_var EASYRSA_REQ_EMAIL      "mactroy@gmail.com"
+set_var EASYRSA_REQ_OU         "Testing"
+set_var EASYRSA_ALGO           "ec"
+set_var EASYRSA_DIGEST         "sha512"
+set_var EASYRSA_REQ_CN         "oasis.mactroy.com"
+set_var EASYRSA_BATCH          "yes"

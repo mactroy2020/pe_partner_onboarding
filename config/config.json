@@ -1,0 +1,13 @@
+{
+    "ca": {
+        "Algo": "ec",
+        "Digest": "sha512",
+        "Host": "oasis.mactroy.com"
+    },
+    "Country": "US",
+    "State": "North Carolina",
+    "City": "Raleigh",
+    "Company": "MacTroy Testing",
+    "OrgUnit": "Testing",
+    "Email": "mactroy@gmail.com"
+}
