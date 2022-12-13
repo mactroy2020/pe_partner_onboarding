@@ -1,15 +1,17 @@
 #/bin/sh
 
-echo "Generating Encryption Keys"
-openssl ecparam -name prime256v1 -genkey -noout -out /certs/encryption-key.pem
-openssl req -config /ca/config/openssl.cnf  -new -key /certs/encryption-key.pem -out /certs/encryption.csr
+set -e
 
-echo "Generating Server Keys"
-openssl genrsa -out /certs/server-key.pem 4096
-openssl req -new -config /ca/config/openssl.cnf -key /certs/server-key.pem -out /certs/server.csr
+echo "Generating ABR Encryption CSR + Keys"
+openssl ecparam -name prime256v1 -genkey -noout -out $1/encryption-key.pem
+openssl req -config $2 -new -key $1/encryption-key.pem -out $1/encryption.csr
 
-echo "Generating Client Keys"
-openssl genrsa -out /certs/client-key.pem 2048
-openssl req -new -config /ca/config/openssl.cnf -key /certs/client-key.pem -out /certs/client.csr
+echo "Generating ABR TLS Server CSR + Keys"
+openssl genrsa -out $1/server-key.pem 4096
+openssl req -new -config $2 -key $1/server-key.pem -out $1/server.csr
+
+echo "Generating ABR TLS Client CSR + Keys"
+openssl genrsa -out $1/client-key.pem 2048
+openssl req -new -config $2 -key $1/client-key.pem -out $1/client.csr
 
 echo "Done"

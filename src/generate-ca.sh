@@ -66,6 +66,8 @@ echo "\nCreate CA Chain"
 cat intermediate/certs/intermediate.cert.pem \
       certs/ca.cert.pem > intermediate/certs/ca-chain.cert.pem
 
+cp intermediate/certs/ca-chain.cert.pem /certs/ca-chain.cert.pem
+
 echo "\n\n=========================================="
 echo "Create Signed Cert for hosting SSL service"
 echo "=========================================="

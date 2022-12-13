@@ -1,13 +1,27 @@
 {
-    "ca": {
-        "Algo": "ec",
-        "Digest": "sha512",
-        "Host": "oasis.mactroy.com"
+    "defaultConfig": {
+        "host": "oasis.mactroy.com",
+        "country": "US",
+        "state": "North Carolina",
+        "city": "Raleigh",
+        "company": "MacTroy Testing",
+        "orgUnit": "Testing",
+        "email": "mactroy@gmail.com"
     },
-    "Country": "US",
-    "State": "North Carolina",
-    "City": "Raleigh",
-    "Company": "MacTroy Testing",
-    "OrgUnit": "Testing",
-    "Email": "mactroy@gmail.com"
+    "ca": {
+        "algo": "ec",
+        "digest": "sha512",
+        "host": "oasis.mactroy.com"
+    },
+    "abr_env": [
+        {
+            "host": "oasis.mactroy.com",
+            "env": "qa"
+        }
+    ],
+    "host_tls": [
+        {
+            "host": "oasis.mactroy.com"
+        }
+    ]
 }

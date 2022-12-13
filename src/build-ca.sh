@@ -1,14 +1,20 @@
 #/bin/sh
 
+# exit when any command fails
+set -e
+
 echo "Building Local Certificate Authority\n=========="
+
+# Create the base directory for storing generated certs + ca
 mkdir -p certs
-# docker run --rm -v $(pwd)/certs/pki:/ca/pki-vol \
-#     partner-ca:latest /bin/bash \
-#     -c "/ca/easyrsa init-pki; cp -R /ca/pki/* /ca/pki-vol;"
 
+# Generate the configuration files for project
+node src/generate-project-config.js
 
-node src/generate-ca-config.js
-
-docker run --rm -v $(pwd)/certs:/certs -v $(pwd)/src:/ca/scripts -v $(pwd)/config:/ca/config \
+# Generate the Root + Intermediate Certificate Authority
+docker run --rm \
+    -v $(pwd)/certs:/certs \
+    -v $(pwd)/src:/ca/scripts \
+    -v $(pwd)/config:/ca/config \
     partner-ca:latest /bin/bash \
     -c "sh /ca/scripts/generate-ca.sh"
