@@ -40,7 +40,7 @@ function generateABREnvironmentCerts(typeName, abrConfig) {
 
     fs.mkdirSync(dirPath, { recursive: true });
     const output = execSync(
-        `docker run --rm -v $(pwd)/certs:/certs -v $(pwd)/src:/ca/scripts -v $(pwd)/config:/ca/config partner-ca:latest /bin/bash -c "cd /ca/scripts && sh generate-abr-certs.sh ${cert_path} ${sslConfigFile}"`,
+        `docker run --rm -v $(pwd)/certs:/certs -v $(pwd)/src:/project_src -v $(pwd)/config:/ca/config partner-ca:latest /bin/bash -c "cd /project_src && sh scripts/generate-abr-certs.sh ${cert_path} ${sslConfigFile}"`,
         { encoding: "utf-8" }
     );
     console.log(output);
@@ -58,7 +58,7 @@ function generateHostTLSCerts(typeName, hostTLSConfig) {
 
     fs.mkdirSync(dirPath, { recursive: true });
     const output = execSync(
-        `docker run --rm -v $(pwd)/certs:/certs -v $(pwd)/src:/ca/scripts -v $(pwd)/config:/ca/config partner-ca:latest /bin/bash -c "cd /ca/scripts && sh generate-tls-cert.sh ${cert_path} ${hostTLSConfig.host} ${sslConfigFile}"`,
+        `docker run --rm -v $(pwd)/certs:/certs -v $(pwd)/src:/project_src -v $(pwd)/config:/ca/config partner-ca:latest /bin/bash -c "cd /project_src && sh scripts/generate-tls-cert.sh ${cert_path} ${hostTLSConfig.host} ${sslConfigFile}"`,
         { encoding: "utf-8" }
     );
     console.log(output);

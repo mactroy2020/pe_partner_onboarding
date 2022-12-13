@@ -15,7 +15,7 @@ node src/generate-project-config.js
 # Generate the Root + Intermediate Certificate Authority
 docker run --rm \
     -v $(pwd)/certs:/certs \
-    -v $(pwd)/src:/ca/scripts \
+    -v $(pwd)/src:/project_src \
     -v $(pwd)/config:/ca/config \
     partner-ca:latest /bin/bash \
-    -c "sh /ca/scripts/generate-ca.sh"
+    -c "sh /project_src/scripts/generate-ca.sh"
