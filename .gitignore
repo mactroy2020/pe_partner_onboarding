@@ -1,5 +1,5 @@
 node_modules
 certs
+config/generated
 config/*.cfg
 config/*.cnf
-config/ca_config_vars

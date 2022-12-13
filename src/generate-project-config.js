@@ -170,7 +170,7 @@ extendedKeyUsage = critical, OCSPSigning
     // console.log("\nOpenSSL Config File:");
     // console.log(rootCAConfigTemplate);
     fs.writeFileSync(
-        __dirname + "/../config/rootca_openssl.cnf",
+        __dirname + "/../config/generated/rootca_openssl.cnf",
         rootCAConfigTemplate,
         {
             encoding: "utf8",
@@ -314,7 +314,7 @@ extendedKeyUsage = critical, OCSPSigning
     // console.log("\nOpenSSL Config File:");
     // console.log(intermediateCAConfigTemplate);
     fs.writeFileSync(
-        __dirname + "/../config/intermediateca_openssl.cnf",
+        __dirname + "/../config/generated/intermediateca_openssl.cnf",
         intermediateCAConfigTemplate,
         {
             encoding: "utf8",
@@ -478,7 +478,7 @@ function generateSignedTLSConfigs(configType, hostConfig) {
     console.log(openSSLConfigTemplate);
     fs.writeFileSync(
         __dirname +
-            `/../config/${configType}${env_tag}_${hostname}_openssl.cnf`,
+            `/../config/generated/${configType}${env_tag}_${hostname}_openssl.cnf`,
         openSSLConfigTemplate,
         {
             encoding: "utf8",

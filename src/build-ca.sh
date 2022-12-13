@@ -9,6 +9,7 @@ echo "Building Local Certificate Authority\n=========="
 mkdir -p certs
 
 # Generate the configuration files for project
+mkdir -p config/generated
 node src/generate-project-config.js
 
 # Generate the Root + Intermediate Certificate Authority

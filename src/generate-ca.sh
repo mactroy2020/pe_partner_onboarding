@@ -9,7 +9,7 @@ mkdir -p certs crl newcerts private
 touch index.txt
 echo 1000 > serial
 
-cp /ca/config/rootca_openssl.cnf /certs/ca/openssl.cnf
+cp /ca/config/generated/rootca_openssl.cnf /certs/ca/openssl.cnf
 openssl genrsa -out private/ca.key.pem 4096
 
 # Create the root certificate
@@ -36,7 +36,7 @@ echo 1000 > serial
 # crlnumber is used to keep track of certificate revocation lists.
 echo 1000 > crlnumber
 
-cp /ca/config/intermediateca_openssl.cnf /certs/ca/intermediate/openssl.cnf
+cp /ca/config/generated/intermediateca_openssl.cnf /certs/ca/intermediate/openssl.cnf
 
 cd ..
 openssl genrsa -out intermediate/private/intermediate.key.pem 4096

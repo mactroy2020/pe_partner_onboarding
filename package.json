@@ -13,7 +13,7 @@
         "remove-ca": "docker container rm -f my-ca 2> /dev/null || true && docker image rm -f partner-ca 2> /dev/null || true",
         "stop-ca": "docker rm -f my-ca",
         "console-ca": "docker exec -it my-ca /bin/bash",
-        "clean": "npm run remove-ca && rm -rf certs && rm -rf config/*.cnf && rm -rf node_modules"
+        "clean": "npm run remove-ca && rm -rf certs && rm -rf config/*.cnf && rm -rf config/generated && rm -rf node_modules"
     },
     "author": "Troy Cochran",
     "license": "private",

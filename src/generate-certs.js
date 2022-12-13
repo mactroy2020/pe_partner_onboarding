@@ -34,7 +34,7 @@ function generateABREnvironmentCerts(typeName, abrConfig) {
     );
     const cert_path = path.resolve(`/certs/${abrConfig.env}_${abrConfig.host}`);
     const dirPath = path.resolve(`${__dirname}/../${cert_path}`);
-    const sslConfigFile = `/ca/config/${typeName}_${abrConfig.env}_${abrConfig.host}_openssl.cnf`;
+    const sslConfigFile = `/ca/config/generated/${typeName}_${abrConfig.env}_${abrConfig.host}_openssl.cnf`;
 
     console.log(`Creating directory: ${dirPath}`);
 
@@ -50,9 +50,9 @@ function generateHostTLSCerts(typeName, hostTLSConfig) {
     console.log(
         `Generating TLS Certs for ${typeName}::${JSON.stringify(hostTLSConfig)}`
     );
-    const cert_path = path.resolve(`/certs/host_tls_${hostTLSConfig.host}`);
+    const cert_path = path.resolve(`/certs/tls_${hostTLSConfig.host}`);
     const dirPath = path.resolve(`${__dirname}/../${cert_path}`);
-    const sslConfigFile = `/ca/config/tls_${hostTLSConfig.host}_openssl.cnf`;
+    const sslConfigFile = `/ca/config/generated/tls_${hostTLSConfig.host}_openssl.cnf`;
 
     console.log(`Creating directory: ${dirPath}`);
 
