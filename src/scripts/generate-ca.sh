@@ -1,6 +1,16 @@
 #!/bin/sh
 
+if [ -f /certs/ca-chain.cert.pem ]; then
+    echo "\n\n=========================================="
+    echo "Certificate Authroity has already been configured.\n"
+    echo "Skipping this step.  To regenerate CA, delete: certs/ca-chain.cert.pem"
+    echo "=========================================="
+    exit 0
+fi
+
+echo "\n\n=========================================="
 echo "Generating Local Certificate Authority"
+echo "=========================================="
 
 # Create directories for CA
 mkdir -p /certs/ca

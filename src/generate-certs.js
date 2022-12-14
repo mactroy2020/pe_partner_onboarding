@@ -39,6 +39,12 @@ function generateABREnvironmentCerts(typeName, abrConfig) {
     console.log(`Creating directory: ${dirPath}`);
 
     fs.mkdirSync(dirPath, { recursive: true });
+
+    if (fs.existsSync(dirPath + "/encryption-key.pem")) {
+        console.log("Certificate already generated, skipping step\n\n");
+        return;
+    }
+
     const output = execSync(
         `docker run --rm -v $(pwd)/certs:/certs -v $(pwd)/src:/project_src -v $(pwd)/config:/ca/config partner-ca:latest /bin/bash -c "cd /project_src && sh scripts/generate-abr-certs.sh ${cert_path} ${sslConfigFile}"`,
         { encoding: "utf-8" }
@@ -57,6 +63,12 @@ function generateHostTLSCerts(typeName, hostTLSConfig) {
     console.log(`Creating directory: ${dirPath}`);
 
     fs.mkdirSync(dirPath, { recursive: true });
+
+    if (fs.existsSync(dirPath + `/${hostTLSConfig.host}_cert.cert.pem`)) {
+        console.log("Certificate already generated, skipping step\n\n");
+        return;
+    }
+
     const output = execSync(
         `docker run --rm -v $(pwd)/certs:/certs -v $(pwd)/src:/project_src -v $(pwd)/config:/ca/config partner-ca:latest /bin/bash -c "cd /project_src && sh scripts/generate-tls-cert.sh ${cert_path} ${hostTLSConfig.host} ${sslConfigFile}"`,
         { encoding: "utf-8" }
