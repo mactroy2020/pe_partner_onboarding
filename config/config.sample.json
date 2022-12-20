@@ -1,34 +1,35 @@
 {
     "defaultConfig": {
-        "host": "oasis.mactroy.com",
+        "host": "default-host.example.com",
         "country": "US",
-        "state": "North Carolina",
-        "city": "Raleigh",
-        "company": "MacTroy Testing",
-        "orgUnit": "Testing",
-        "email": "mactroy@gmail.com"
+        "state": "California",
+        "city": "Cupertino",
+        "company": "Example Company",
+        "orgUnit": "Testing Org",
+        "email": "me@example.com"
     },
     "ca": {
-        "algo": "ec",
-        "digest": "sha512",
-        "host": "oasis.mactroy.com"
+        "host": "host.example.com"
     },
     "abr_env": [
         {
-            "host": "oasis.mactroy.com",
+            "host": "host.example.com",
+            "orgUnit": "QA Org",
             "env": "qa"
         },
         {
-            "host": "mirage.mactroy.com",
+            "host": "alt-host.example.com",
             "env": "qa"
         }
     ],
     "host_tls": [
         {
-            "host": "oasis.mactroy.com"
+            "host": "host.example.com",
+            "orgUnit": "QA Org",
+            "email": "qa@example.com"
         },
         {
-            "host": "mirage.mactroy.com"
+            "host": "alt-host.example.com"
         }
     ]
 }

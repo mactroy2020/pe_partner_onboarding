@@ -4,3 +4,4 @@ config/generated
 config/*.cfg
 config/*.cnf
 .DS_Store
+config/config.json
