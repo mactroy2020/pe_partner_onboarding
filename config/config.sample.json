@@ -17,11 +17,18 @@
         {
             "host": "oasis.mactroy.com",
             "env": "qa"
+        },
+        {
+            "host": "mirage.mactroy.com",
+            "env": "qa"
         }
     ],
     "host_tls": [
         {
             "host": "oasis.mactroy.com"
+        },
+        {
+            "host": "mirage.mactroy.com"
         }
     ]
 }
