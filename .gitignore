@@ -5,3 +5,4 @@ config/*.cfg
 config/*.cnf
 .DS_Store
 config/config.json
+**/*.bak
